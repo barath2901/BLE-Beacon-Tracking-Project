@@ -1,65 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>College ERP - Live Tracking</title>
+    <meta charset="UTF-8">
+    <title>College Attendance</title>
     <meta http-equiv="refresh" content="3">
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; padding: 20px; }
-        .header { background: #6c5ce7; color: white; padding: 20px; border-radius: 12px; text-align: center; margin-bottom: 20px;}
-        .info-box { background: #dfe6e9; padding: 15px; border-radius: 8px; font-weight: bold; color: #2d3436; border-left: 5px solid #0984e3; }
-        
-        table { width: 100%; background: white; border-collapse: collapse; margin-top: 20px; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        th, td { padding: 15px; border-bottom: 1px solid #eee; text-align: left; }
-        th { background-color: #0984e3; color: white; }
-        
-        .badge { padding: 6px 12px; border-radius: 20px; font-weight: bold; font-size: 0.85em; display: inline-block; min-width: 80px; text-align: center;}
-        .present { background-color: #d4edda; color: #155724; } /* Green */
-        .absent { background-color: #f8d7da; color: #721c24; }  /* Red */
-        .warning { background-color: #fff3cd; color: #856404; } /* Yellow/Orange */
-        
-        .loc-tag { background: #636e72; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.9em; }
+        body { font-family: sans-serif; background-color: #f4f6f9; padding: 20px; }
+        .navbar { display: flex; justify-content: space-between; align-items: center; background: #6c5ce7; color: white; padding: 15px; border-radius: 10px; margin-bottom: 20px; }
+        .btn { background: white; color: #6c5ce7; padding: 8px 15px; text-decoration: none; border-radius: 20px; font-weight: bold; }
+        .status-box { background: white; padding: 15px; border-left: 5px solid #fdcb6e; margin-bottom: 20px; font-weight: bold; }
+        table { width: 100%; background: white; border-collapse: collapse; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        th, td { padding: 12px; border-bottom: 1px solid #eee; text-align: left; }
+        th { background: #2d3436; color: white; }
+        .badge { padding: 5px 10px; border-radius: 15px; color: white; font-size: 0.8em; }
+        .present { background: #00b894; }
+        .absent { background: #d63031; }
+        .warning { background: #e17055; }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>🎓 AAA College - Smart Attendance System</h1>
+    <div class="navbar">
+        <h2>🎓 Smart Attendance</h2>
+        <a href="/download" class="btn">📂 View Reports</a>
     </div>
 
-    <div class="info-box">
-        📅 Status: {{ status }} | ⏳ Current Session: {{ subject }}
+    <div class="status-box">
+        ⏳ Session: {{ subject }} | 📅 Status: {{ status }}
     </div>
 
     <table>
-        <thead>
-            <tr>
-                <th>Roll No</th> <th>Name</th> <th>Live Status</th> <th>Current Location</th> <th>Last Seen Time</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for row in attendance %}
-            <tr>
-                <td>{{ row[0] }}</td>
-                <td><b>{{ row[1] }}</b></td>
-                <td>
-                    {% if row[2] == 'PRESENT' %}
-                        <span class="badge present">PRESENT</span>
-                    {% elif 'WARNING' in row[2] %}
-                        <span class="badge warning">⚠️ BUNKING</span>
-                    {% else %}
-                        <span class="badge absent">ABSENT</span>
-                    {% endif %}
-                </td>
-                <td>
-                    {% if row[3] != '-' %}
-                        <span class="loc-tag">📍 {{ row[3] }}</span>
-                    {% else %}
-                        -
-                    {% endif %}
-                </td>
-                <td>{{ row[4] }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
+        <tr>
+            <th>ID</th> <th>Name</th> <th>Status</th> <th>Location</th> <th>Last Seen</th>
+        </tr>
+        {% for row in attendance %}
+        <tr>
+            <td>{{ row[0] }}</td>
+            <td><b>{{ row[1] }}</b></td>
+            <td>
+                {% if row[2] == 'PRESENT' %} <span class="badge present">PRESENT</span>
+                {% elif 'WARNING' in row[2] %} <span class="badge warning">BUNKING</span>
+                {% else %} <span class="badge absent">ABSENT</span>
+                {% endif %}
+            </td>
+            <td>{{ row[3] }}</td>
+            <td>{{ row[4] }}</td>
+        </tr>
+        {% endfor %}
     </table>
 </body>
 </html>

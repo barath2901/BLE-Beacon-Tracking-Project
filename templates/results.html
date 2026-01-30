@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Attendance Reports</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f6f9; padding: 40px; }
+        .container { max-width: 800px; margin: auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        
+        h1 { color: #2d3436; border-bottom: 2px solid #eee; padding-bottom: 15px; }
+        
+        ul { list-style: none; padding: 0; }
+        li { 
+            background: #fff; border: 1px solid #e1e1e1; margin-bottom: 10px; padding: 15px; 
+            border-radius: 8px; display: flex; justify-content: space-between; align-items: center;
+            transition: transform 0.2s;
+        }
+        li:hover { transform: translateX(5px); border-color: #6c5ce7; }
+        
+        .file-name { font-weight: bold; color: #555; display: flex; align-items: center; }
+        .icon { margin-right: 10px; font-size: 1.2em; }
+        
+        .btn-download { 
+            background-color: #00b894; color: white; text-decoration: none; padding: 8px 15px; 
+            border-radius: 5px; font-size: 0.9em; font-weight: bold;
+        }
+        .btn-download:hover { background-color: #00a884; }
+        
+        .btn-back { display: inline-block; margin-top: 20px; color: #6c5ce7; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>📂 Archived Attendance Reports</h1>
+        <p>Reports are automatically generated at the end of every period.</p>
+        
+        <ul>
+            {% if files %}
+                {% for file in files %}
+                <li>
+                    <span class="file-name"><span class="icon">📄</span> {{ file }}</span>
+                    <a href="/download/{{ file }}" class="btn-download">⬇ Download CSV</a>
+                </li>
+                {% endfor %}
+            {% else %}
+                <li style="justify-content: center; color: #999;">No reports generated yet. Wait for a period to end.</li>
+            {% endif %}
+        </ul>
+
+        <a href="/" class="btn-back">← Back to Live Dashboard</a>
+    </div>
+
+</body>
+</html>

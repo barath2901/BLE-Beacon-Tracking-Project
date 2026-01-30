@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reports</title>
+    <style>
+        body { font-family: sans-serif; padding: 40px; background: #f4f6f9; }
+        .container { background: white; padding: 30px; border-radius: 10px; max-width: 600px; margin: auto; }
+        li { padding: 10px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; }
+        a { text-decoration: none; color: #0984e3; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📂 Attendance Reports</h1>
+        <ul>
+            {% for file in files %}
+            <li>
+                <span>📄 {{ file }}</span>
+                <a href="/download/{{ file }}">⬇ Download</a>
+            </li>
+            {% endfor %}
+        </ul>
+        <br>
+        <a href="/">← Back to Dashboard</a>
+    </div>
+</body>
+</html>

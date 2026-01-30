@@ -1,0 +1,67 @@
+Day,Start_Time,End_Time,Subject
+Monday,09:10,10:00,CCW332 - Digital Marketing
+Monday,10:00,10:50,CCS365 - Software Defined Networks
+Monday,10:50,11:05,BREAK - Tea Break
+Monday,11:05,11:55,CCS345 - Ethics and AI
+Monday,11:55,12:45,CCS345 - Ethics and AI
+Monday,12:45,13:30,BREAK - Lunch Break
+Monday,13:30,14:15,OCE351 - Env. Impact Assessment
+Monday,14:15,15:00,CS3691 - Embedded Systems
+Monday,15:00,15:10,BREAK - Tea Break
+Monday,15:10,15:55,CCS356 - OOSE
+Monday,15:55,16:40,LIB - Library
+Tuesday,09:10,10:00,CCS345 - Ethics and AI
+Tuesday,10:00,10:50,CCS354
+Tuesday,10:50,11:05,BREAK - Tea Break
+Tuesday,11:05,11:55,CCS365 - Software Defined Networks
+Tuesday,11:55,12:45,CS3691 - Embedded Systems
+Tuesday,12:45,13:30,BREAK - Lunch Break
+Tuesday,13:30,14:15,CCS354
+Tuesday,14:15,15:00,CCS354
+Tuesday,15:00,15:10,BREAK - Tea Break
+Tuesday,15:10,15:55,CCS356 - OOSE
+Tuesday,15:55,16:40,CS
+Wednesday,09:10,10:00,CCS365 - Software Defined Networks
+Wednesday,10:00,10:50,OCE351 - Env. Impact Assessment
+Wednesday,10:50,11:05,BREAK - Tea Break
+Wednesday,11:05,11:55,APP
+Wednesday,11:55,12:45,CCS345 - Ethics and AI
+Wednesday,12:45,13:30,BREAK - Lunch Break
+Wednesday,13:30,14:15,CCS356 - OOSE
+Wednesday,14:15,15:00,CCS356 - OOSE
+Wednesday,15:00,15:10,BREAK - Tea Break
+Wednesday,15:10,15:55,CS3691 - Embedded Systems
+Wednesday,15:55,16:40,CS3691 - Embedded Systems
+Thursday,09:10,10:00,OCE351 - Env. Impact Assessment
+Thursday,10:00,10:50,CCS354
+Thursday,10:50,11:05,BREAK - Tea Break
+Thursday,11:05,11:55,CCS345 - Ethics and AI
+Thursday,11:55,12:45,APP
+Thursday,12:45,13:30,BREAK - Lunch Break
+Thursday,13:30,14:15,CCS354
+Thursday,14:15,15:00,CCS356 - OOSE
+Thursday,15:00,15:10,BREAK - Tea Break
+Thursday,15:10,15:55,CCW332 - Digital Marketing
+Thursday,15:55,16:40,CCW332 - Digital Marketing
+Friday,09:10,10:00,CCS356 - OOSE
+Friday,10:00,10:50,CS3691 - Embedded Systems
+Friday,10:50,11:05,BREAK - Tea Break
+Friday,11:05,11:55,CCS365 - SDN Laboratory
+Friday,11:55,12:45,CCS365 - SDN Laboratory
+Friday,12:45,13:30,BREAK - Lunch Break
+Friday,13:30,14:15,ASS - Association
+Friday,14:15,15:00,OCE351 - Env. Impact Assessment
+Friday,15:00,15:10,BREAK - Tea Break
+Friday,15:10,15:55,CCW332 - Digital Marketing
+Friday,15:55,16:40,MX3089 - Industrial Safety
+Saturday,09:10,10:00,CS3691 - Embedded Systems
+Saturday,10:00,10:50,CCW332 - Digital Marketing
+Saturday,10:50,11:05,BREAK - Tea Break
+Saturday,11:05,11:55,OCE351 - Env. Impact Assessment
+Saturday,11:55,12:45,CCS345 - Ethics and AI
+Saturday,12:45,13:30,BREAK - Lunch Break
+Saturday,13:30,14:15,CS
+Saturday,14:15,15:00,CCW332 - Digital Marketing
+Saturday,15:00,15:10,BREAK - Tea Break
+Saturday,15:10,15:55,CCS365 - Software Defined Networks
+Saturday,15:55,16:40,COUN
