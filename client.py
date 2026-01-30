@@ -1,51 +1,52 @@
 import socket
 import asyncio
+from datetime import datetime
 from bleak import BleakScanner
 
-# --- CONFIGURATION (EDIT THIS FOR EACH LAPTOP) ---
-SERVER_IP = "10.242.183.173"   # <--- REPLACE 'X' WITH LAPTOP 1's ACTUAL IP
+# --- EDIT THIS FOR EACH LAPTOP ---
+SERVER_IP = "192.168.1.X"   # <--- PUT LAPTOP 1 IP HERE
 SERVER_PORT = 12000
-NODE_NAME = "Client_Node_1" # <--- Change to "Node_2", "Node_3", etc.
+NODE_NAME = "Classroom"     # <--- CHANGE TO "Library", "Canteen", etc.
 
 async def run_client():
-    print(f"📡 Starting {NODE_NAME}...")
+    print(f"📡 Starting Scanner Node: {NODE_NAME}")
+    
     try:
-        # 1. Connect to Server
+        # Connect to Server
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.connect((SERVER_IP, SERVER_PORT))
+        s.sendall(NODE_NAME.encode()) # Identify ourselves
         
-        # 2. Send our Name to Server
-        s.sendall(NODE_NAME.encode())
-        print(f"✅ Connected to Server at {SERVER_IP}")
-        
-        # 3. Receive Allowed IDs
+        # Get Allowed IDs
         raw_ids = s.recv(1024).decode()
         allowed_ids = [int(x) for x in raw_ids.split(",")]
-        print(f"🎯 Tracking IDs: {allowed_ids}")
+        print(f"✅ Connected! Tracking {len(allowed_ids)} students.")
 
-        # 4. Scanning Logic
         def callback(device, adv):
             if 0x004c in adv.manufacturer_data:
                 data = adv.manufacturer_data[0x004c]
                 if len(data) >= 23:
                     minor = int.from_bytes(data[20:22], byteorder='big')
-                    rssi = adv.rssi
-                    
                     if minor in allowed_ids:
-                        # Send data: "ID,RSSI"
-                        msg = f"{minor},{rssi}"
-                        s.sendall(msg.encode())
-                        print(f"📤 Sent: Student {minor} (Signal: {rssi})")
+                        # Send Data
+                        s.sendall(f"{minor},{adv.rssi}".encode())
+                        # Clean Print (Overwrites the same line)
+                        print(f"\r✨ Live: Detected {minor} (Signal: {adv.rssi})   ", end="")
 
+        print("🔍 Scanning started (Ctrl+C to stop)...")
         async with BleakScanner(callback):
-            print("🔍 Scanning for Beacons...")
             while True:
+                # Auto-Stop at 4:45 PM to save battery
+                now = datetime.now()
+                if now.hour >= 16 and now.minute >= 45:
+                    print("\n🌙 Day Over. Stopping Scanner.")
+                    break
                 await asyncio.sleep(1)
 
-    except ConnectionRefusedError:
-        print("❌ Error: Server not found! Check IP address or Firewall.")
     except Exception as e:
-        print(f"❌ Error: {e}")
+        print(f"\n❌ Error: {e}")
+    finally:
+        s.close()
 
 if __name__ == "__main__":
     asyncio.run(run_client())
